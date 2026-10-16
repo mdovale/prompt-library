@@ -1,0 +1,57 @@
+prompts:
+  - id: decide.options
+    path: prompts/decide/options.md
+    title: Choose an option
+    status: active
+    use_when: You have two or more options and need a recommendation against stated criteria
+    inputs: [decision, options, criteria]
+    tags: [decide]
+  - id: debug.failure
+    path: prompts/debug/failure.md
+    title: Diagnose a failure
+    status: active
+    use_when: You have an error, log, or failing output and need the most likely cause and the next check
+    inputs: [symptom, context]
+    tags: [debug]
+  - id: draft.from-brief
+    path: prompts/draft/from-brief.md
+    title: Draft from a brief
+    status: active
+    use_when: You have a brief and need a first draft in a named format
+    inputs: [brief, format]
+    tags: [draft, writing]
+  - id: extract.actions
+    path: prompts/extract/actions.md
+    title: Extract actions
+    status: active
+    use_when: You have notes or a transcript and need owners, actions, and open questions
+    inputs: [source]
+    tags: [extract, meetings]
+  - id: plan.steps
+    path: prompts/plan/steps.md
+    title: Plan the steps
+    status: active
+    use_when: You have a goal and need an ordered plan whose first step is small enough to start
+    inputs: [goal, constraints]
+    tags: [plan]
+  - id: review.diff
+    path: prompts/review/diff.md
+    title: Diff review
+    status: active
+    use_when: You have a diff and need correctness, risk, and test gaps called out before merge
+    inputs: [diff]
+    tags: [review, code]
+  - id: review.security
+    path: prompts/review/security.md
+    title: Security review
+    status: active
+    use_when: You have a diff and need security findings before merge
+    inputs: [diff]
+    tags: [review, security]
+  - id: revise.clarity
+    path: prompts/revise/clarity.md
+    title: Revise for clarity
+    status: active
+    use_when: You have a draft and need it clearer and shorter without changing the claim
+    inputs: [draft]
+    tags: [revise, writing]

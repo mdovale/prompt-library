@@ -1,0 +1,35 @@
+---
+description: Required shape for prompt files, fragments, and catalog.yaml
+globs: prompts/**/*.md, fragments/**/*.md, catalog.yaml
+alwaysApply: false
+---
+
+# Prompt format
+
+Match `prompts/review/security.md`. One prompt per file. `prompts/<job>/<slug>.md` has id `<job>.<slug>`.
+
+Frontmatter keys:
+
+- `id`, `title`, `status` (`draft`, `active`, or `retired`), `use_when`, `inputs`, `output`, `tags`
+- `includes`: list of `fragments/*.md` paths, or omit the key
+
+Body sections, in order: `## Use`, `## Prompt`, `## Notes`. Each section has text.
+
+`## Prompt` is the only text to send. Input placeholders use `{{name}}` and match `inputs`. Fragment markers use `{{include:fragments/<file>.md}}` and match `includes`.
+
+```markdown
+{{include:fragments/constraint-stay-in-scope.md}}
+
+Diff:
+
+{{diff}}
+```
+
+Fragments are a clause, not a full prompt. Frontmatter is `id` and `title` only. `id` is the filename without `.md`. No `## Use`, `## Prompt`, or `## Notes` headings.
+
+On any add or edit:
+
+1. Update `catalog.yaml` in the same change. Copy `id`, `path`, `title`, `status`, `use_when`, `inputs`, and `tags`. Leave fragments out of the catalog.
+2. Run `python3 scripts/check_library.py` and fix every failure before stopping.
+
+Keep retired prompts in the catalog with `status: retired`. Leave a retired id unused for a new prompt.

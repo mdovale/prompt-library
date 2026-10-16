@@ -1,0 +1,21 @@
+---
+description: How to look up and apply prompts from this library
+alwaysApply: true
+---
+
+# Prompt library
+
+This repo is a prompt library. Prompts live in `prompts/`. The index is `catalog.yaml`. Read the catalog before opening prompt files.
+
+When the user names a prompt id, asks for a library prompt, or is choosing how to prompt a model:
+
+1. Read `catalog.yaml`.
+2. Pick one `active` entry by id or by `use_when`. If none fit, say so. Leave unmatched prompts unused.
+3. Read that prompt file only, plus any `includes` fragments.
+4. Send the `## Prompt` section. Expand each `{{include:...}}` with the fragment body (text after its frontmatter). Fill `{{placeholders}}` from the user. Leave `## Use` and `## Notes` out of the model call.
+
+When adding or editing a prompt, follow `.cursor/rules/prompt-format.mdc` and run `python3 scripts/check_library.py`.
+
+Slash commands: `/use-prompt`, `/add-prompt`, `/list-prompts`, `/check-library`.
+
+Ids look like `review.security` and match `prompts/review/security.md`.
