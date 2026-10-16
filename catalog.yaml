@@ -55,3 +55,10 @@ prompts:
     use_when: You have a draft and need it clearer and shorter without changing the claim
     inputs: [draft]
     tags: [revise, writing]
+  - id: revise.deepen
+    path: prompts/revise/deepen.md
+    title: Deepen a task
+    status: active
+    use_when: You have a task or prompt and need it rewritten to ask for professional depth rather than more scope
+    inputs: [task]
+    tags: [revise, prompts]
